@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { ShoppingCart, Droplets, Menu, X, ArrowRight } from 'lucide-react';
 import { useCart } from '../context/CartContext';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
   const { totalItems } = useCart();
@@ -31,10 +32,10 @@ const Navbar = () => {
   }, [location]);
 
   const navStyles = isHome 
-    ? (scrolled ? 'bg-white/90 backdrop-blur-xl border-b border-slate-200/50 py-3 shadow-sm' : 'bg-transparent py-5')
-    : 'bg-white/95 backdrop-blur-md border-b border-slate-100 py-3 shadow-sm';
+    ? (scrolled ? 'bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border-b border-slate-200/50 dark:border-slate-800 py-3 shadow-sm' : 'bg-transparent py-5')
+    : 'bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-100 dark:border-slate-800 py-3 shadow-sm';
 
-  const textStyles = isHome && !scrolled ? 'text-white' : 'text-slate-900';
+  const textStyles = isHome && !scrolled ? 'text-white' : 'text-slate-900 dark:text-slate-100';
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${navStyles}`}>
@@ -76,8 +77,9 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Sağ Alan - Sepet ve Menü Butonu */}
+          {/* Sağ Alan - Tema, Sepet ve Menü Butonu */}
           <div className="flex items-center gap-4">
+            <ThemeToggle />
             <Link to="/sepet" className="relative group">
               <div className={`
                 flex items-center gap-2.5 px-5 py-2.5 rounded-2xl font-black text-xs transition-all duration-300 border
@@ -120,7 +122,7 @@ const Navbar = () => {
 
       {/* Mobil Menü */}
       {menuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-white border-b border-slate-100 shadow-2xl animate-fade-in">
+        <div className="md:hidden absolute top-full left-0 right-0 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 shadow-2xl animate-fade-in transition-colors duration-300">
           <div className="p-4 flex flex-col gap-2">
             {[
               { to: '/', label: 'Ana Sayfa' },
@@ -130,7 +132,7 @@ const Navbar = () => {
               <NavLink 
                 key={link.to} 
                 to={link.to} 
-                className="flex items-center justify-between p-4 rounded-2xl bg-slate-50 text-slate-900 font-bold"
+                className="flex items-center justify-between p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50 text-slate-900 dark:text-slate-100 font-bold"
               >
                 {link.label}
                 <ArrowRight className="w-4 h-4 text-cyan-500" />

@@ -92,7 +92,7 @@ const CartPage = () => {
 
   if (ordered) {
     return (
-      <div className="min-h-screen bg-slate-50 pt-20 flex items-center justify-center px-4">
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-950 transition-colors duration-300 pt-20 flex items-center justify-center px-4">
         <div className="max-w-xl w-full text-center animate-fade-in my-8">
           
           {/* Başarı İkonu */}
@@ -100,7 +100,7 @@ const CartPage = () => {
             <CheckCircle className="w-12 h-12 text-emerald-500 animate-pulse" />
           </div>
           
-          <h2 className="text-4xl font-black text-slate-900 mb-4 tracking-tight">Sipariş Tamamlandı!</h2>
+          <h2 className="text-4xl font-black text-slate-900 dark:text-slate-100 mb-4 tracking-tight">Sipariş Tamamlandı!</h2>
           <p className="text-slate-500 mb-8 leading-relaxed text-sm">
             Harika seçim! Sularınız en taze halleriyle hazırlanıyor ve yakında kapınızda olacak. Detayları e-postanıza gönderdik.
           </p>
@@ -177,7 +177,7 @@ const CartPage = () => {
           </div>
 
           {/* Sipariş Detayları Kartı */}
-          <div className="bg-white rounded-[32px] p-8 mb-8 border border-slate-100 shadow-sm text-left space-y-4">
+          <div className="bg-white dark:bg-slate-900/60 rounded-[32px] p-8 mb-8 border border-slate-100 dark:border-slate-800 shadow-sm text-left space-y-4 transition-colors duration-300">
             <div className="flex justify-between items-center text-sm font-medium border-b border-slate-50 pb-3">
               <span className="text-slate-400">Sipariş No:</span>
               <span className="text-slate-900 font-bold">#WB-{Math.floor(100000 + Math.random() * 900000)}</span>
@@ -234,7 +234,7 @@ const CartPage = () => {
 
   if (cartItems.length === 0) {
     return (
-      <div className="min-h-screen bg-slate-50 pt-20 flex items-center justify-center px-4">
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-950 transition-colors duration-300 pt-20 flex items-center justify-center px-4">
         <div className="text-center animate-fade-in">
           <div className="w-24 h-24 bg-white rounded-[32px] flex items-center justify-center mx-auto mb-8 shadow-xl shadow-slate-200/50">
             <ShoppingBag className="w-10 h-10 text-slate-300" />
@@ -250,14 +250,14 @@ const CartPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 pt-24 pb-20">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 transition-colors duration-300 pt-24 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-4 mb-10">
           <Link to="/urunler" className="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-slate-400 hover:text-cyan-500 hover:shadow-md transition-all">
             <ArrowLeft className="w-5 h-5" />
           </Link>
           <div>
-            <h1 className="text-3xl font-black text-slate-900 tracking-tight">Ödeme Paneli</h1>
+            <h1 className="text-3xl font-black text-slate-900 dark:text-slate-100 tracking-tight">Ödeme Paneli</h1>
             <p className="text-slate-400 text-sm font-medium">{cartItems.length} Ürün Çeşidi · Güvenli Ödeme</p>
           </div>
         </div>
@@ -267,7 +267,7 @@ const CartPage = () => {
           <div className="lg:col-span-8 space-y-8">
             
             {/* Ürün Listesi */}
-            <div className="bg-white rounded-[32px] shadow-sm border border-slate-100 overflow-hidden">
+            <div className="bg-white dark:bg-slate-900/60 rounded-[32px] shadow-sm border border-slate-100 dark:border-slate-800 overflow-hidden transition-colors duration-300">
               <div className="p-8 border-b border-slate-50 flex items-center justify-between">
                 <h2 className="font-black text-slate-800 text-lg flex items-center gap-2">
                   <ShoppingBag className="w-5 h-5 text-cyan-500" /> Sepetim
@@ -282,21 +282,21 @@ const CartPage = () => {
                     </div>
                     <div className="flex-1 min-w-0 text-center sm:text-left">
                       <p className="text-[10px] font-black text-cyan-500 uppercase tracking-widest mb-1">{item.marka}</p>
-                      <h3 className="font-bold text-slate-800 text-base mb-1">{item.isim}</h3>
-                      <p className="text-xs text-slate-400 font-medium">{item.hacim} · pH {item.phDegeri}</p>
+                      <h3 className="font-bold text-slate-800 dark:text-slate-100 text-base mb-1">{item.isim}</h3>
+                      <p className="text-xs text-slate-400 dark:text-slate-300 font-medium">{item.hacim} · pH {item.phDegeri}</p>
                     </div>
-                    <div className="flex items-center gap-4 bg-slate-50 rounded-2xl p-1.5">
-                      <button onClick={() => decreaseQty(item.id)} className="w-8 h-8 rounded-xl bg-white flex items-center justify-center text-slate-400 hover:text-slate-800 shadow-sm transition-all">
+                    <div className="flex items-center gap-4 bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-1.5">
+                      <button onClick={() => decreaseQty(item.id)} className="w-8 h-8 rounded-xl bg-white dark:bg-slate-700 flex items-center justify-center text-slate-400 dark:text-slate-300 hover:text-slate-800 dark:hover:text-white dark:hover:bg-cyan-500 shadow-sm transition-all">
                         <Minus className="w-4 h-4" />
                       </button>
-                      <span className="w-6 text-center font-black text-slate-800">{item.quantity}</span>
-                      <button onClick={() => increaseQty(item.id)} className="w-8 h-8 rounded-xl bg-white flex items-center justify-center text-slate-400 hover:text-slate-800 shadow-sm transition-all">
+                      <span className="w-6 text-center font-black text-slate-800 dark:text-slate-100">{item.quantity}</span>
+                      <button onClick={() => increaseQty(item.id)} className="w-8 h-8 rounded-xl bg-white dark:bg-slate-700 flex items-center justify-center text-slate-400 dark:text-slate-300 hover:text-slate-800 dark:hover:text-white dark:hover:bg-cyan-500 shadow-sm transition-all">
                         <Plus className="w-4 h-4" />
                       </button>
                     </div>
                     <div className="text-right min-w-[100px]">
-                      <p className="text-lg font-black text-slate-800">₺{(item.fiyat * item.quantity).toFixed(2)}</p>
-                      <button onClick={() => removeItem(item.id)} className="text-[10px] font-bold text-red-300 hover:text-red-500 transition-colors uppercase tracking-tighter">Kaldır</button>
+                      <p className="text-lg font-black text-slate-800 dark:text-slate-100">₺{(item.fiyat * item.quantity).toFixed(2)}</p>
+                      <button onClick={() => removeItem(item.id)} className="text-[10px] font-bold text-red-400 dark:text-red-400 hover:text-red-600 dark:hover:text-red-300 transition-colors uppercase tracking-tighter">Kaldır</button>
                     </div>
                   </div>
                 ))}
@@ -306,7 +306,7 @@ const CartPage = () => {
             {/* Form */}
             <form id="checkout-form" onSubmit={handleSubmit} className="space-y-8">
               {/* Teslimat Bilgileri */}
-              <div className="bg-white rounded-[32px] shadow-sm border border-slate-100 p-8">
+              <div className="bg-white dark:bg-slate-900/60 rounded-[32px] shadow-sm border border-slate-100 dark:border-slate-800 p-8 transition-colors duration-300">
                 <h2 className="font-black text-slate-800 text-lg mb-8 flex items-center gap-2">
                   <User className="w-5 h-5 text-cyan-500" /> Teslimat Bilgileri
                 </h2>
@@ -390,7 +390,7 @@ const CartPage = () => {
               </div>
 
               {/* Ödeme Bilgileri */}
-              <div className="bg-white rounded-[32px] shadow-sm border border-slate-100 p-8">
+              <div className="bg-white dark:bg-slate-900/60 rounded-[32px] shadow-sm border border-slate-100 dark:border-slate-800 p-8 transition-colors duration-300">
                 <h2 className="font-black text-slate-800 text-lg mb-8 flex items-center justify-between">
                   <span className="flex items-center gap-2"><CreditCard className="w-5 h-5 text-cyan-500" /> Ödeme Bilgileri</span>
                   <div className="flex gap-2">
@@ -563,13 +563,13 @@ const CartPage = () => {
             <div className="sticky top-24 space-y-6">
               
               {/* DEPOZİTO DEĞİŞİM SİHİRBAZI */}
-              <div className="bg-white rounded-[32px] p-6 border border-slate-100 shadow-sm text-slate-800 relative overflow-hidden">
+              <div className="bg-white dark:bg-slate-900/80 backdrop-blur-md rounded-[32px] p-6 border border-slate-100 dark:border-slate-800/60 shadow-sm text-slate-800 dark:text-slate-100 relative overflow-hidden transition-colors duration-300">
                 <div className="absolute -right-8 -top-8 w-20 h-20 bg-cyan-500/5 rounded-full blur-xl pointer-events-none" />
                 
-                <h3 className="text-xs font-black text-slate-700 mb-2.5 flex items-center gap-1.5 uppercase tracking-wider">
+                <h3 className="text-xs font-black text-slate-700 dark:text-slate-200 mb-2.5 flex items-center gap-1.5 uppercase tracking-wider">
                   ♻️ Depozito Değişim Sihirbazı
                 </h3>
-                <p className="text-[10px] text-slate-400 font-bold leading-relaxed mb-4">
+                <p className="text-[10px] text-slate-400 dark:text-slate-300 font-bold leading-relaxed mb-4">
                   Elindeki boş damacanayı teslim ederek tasarruf edebilirsin. Farklı marka damacana geçişlerinde tek seferlik fark ücreti yansıtılır.
                 </p>
                 
@@ -640,7 +640,7 @@ const CartPage = () => {
               </div>
 
               {/* Sipariş Özeti */}
-              <div className="bg-slate-900 rounded-[32px] p-8 shadow-2xl shadow-slate-900/20 text-white overflow-hidden relative">
+              <div className="bg-slate-900 dark:bg-slate-900/80 backdrop-blur-md border border-transparent dark:border-slate-800/60 rounded-[32px] p-8 shadow-2xl shadow-slate-900/20 text-white overflow-hidden relative">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 blur-3xl rounded-full"></div>
                 <h2 className="text-xl font-black mb-8 relative z-10 tracking-tight">Sipariş Özeti</h2>
                 
@@ -671,7 +671,7 @@ const CartPage = () => {
                 <div className="border-t border-white/10 pt-6 mb-8">
                   <div className="flex justify-between items-end">
                     <span className="text-slate-400 text-xs font-bold uppercase tracking-widest">TOPLAM TUTAR</span>
-                    <span className="text-3xl font-black text-white tracking-tight">₺{grandTotal.toFixed(2)}</span>
+                    <span className="text-3xl font-extrabold text-white dark:text-white tracking-tight">₺{grandTotal.toFixed(2)}</span>
                   </div>
                 </div>
 

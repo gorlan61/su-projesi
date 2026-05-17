@@ -121,7 +121,7 @@ const HeroSection = () => {
 };
 
 const FeaturesSection = () => (
-  <section className="py-20 bg-white">
+  <section className="py-20 bg-white dark:bg-slate-950 transition-colors duration-300">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {[
@@ -154,7 +154,7 @@ const FeaturesSection = () => (
             <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${color} flex items-center justify-center mb-5 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
               <Icon className="w-7 h-7 text-white" />
             </div>
-            <h3 className="font-bold text-slate-800 text-xl mb-3">{title}</h3>
+            <h3 className="font-bold text-slate-800 dark:text-slate-100 text-xl mb-3">{title}</h3>
             <p className="text-slate-500 leading-relaxed text-sm">{desc}</p>
           </div>
         ))}
@@ -204,7 +204,7 @@ const PHGuideSection = () => (
 const PopularSection = () => {
   const popular = productsData.filter(p => p.popular).slice(0, 4);
   return (
-    <section className="py-24 bg-slate-50">
+    <section className="py-24 bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-100 text-amber-700 text-sm font-semibold mb-4">
@@ -237,7 +237,7 @@ const TestimonialSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-white dark:bg-slate-950 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-100 text-cyan-700 text-sm font-semibold mb-4">
@@ -261,7 +261,7 @@ const TestimonialSection = () => {
                     {t.avatar}
                   </div>
                   <div>
-                    <p className="font-semibold text-slate-800 text-sm">{t.name}</p>
+                    <p className="font-semibold text-slate-800 dark:text-slate-100 text-sm">{t.name}</p>
                     <p className="text-slate-400 text-xs">{t.city}</p>
                   </div>
                 </div>
@@ -278,7 +278,7 @@ const TestimonialSection = () => {
 const BrandSection = () => {
   const brands = ['VOSS', 'Evian', 'Fiji', 'San Pellegrino', 'Perrier', 'Acqua Panna', 'Gerolsteiner', 'Munzur', 'Uludağ'];
   return (
-    <section className="py-14 bg-slate-50 border-t border-slate-100">
+    <section className="py-14 bg-slate-50 dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <p className="text-center text-slate-400 text-xs font-bold uppercase tracking-widest mb-8">
           Güvendiğimiz Markalar
@@ -327,7 +327,7 @@ const CTASection = () => (
 );
 
 const HomePage = () => (
-  <main className="bg-slate-50">
+  <main className="bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
     <HeroSection />
     
     {/* Akıllı Tüketim Asistanı - Layered Floating Glassmorphic Container */}

@@ -38,9 +38,9 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <div className="group bg-white rounded-[32px] border border-slate-100 p-3 hover:scale-[1.02] hover:shadow-xl transition-all duration-300">
+    <div className="group bg-white dark:bg-slate-900/60 rounded-[32px] border border-slate-100 dark:border-slate-800 p-3 hover:scale-[1.02] hover:shadow-xl dark:hover:border-cyan-600 transition-all duration-300">
       {/* Görsel Alanı */}
-      <div className="relative aspect-[4/5] rounded-[24px] overflow-hidden bg-slate-50 mb-4 cursor-pointer" onClick={() => setShowDetails(true)}>
+      <div className="relative aspect-[4/5] rounded-[24px] overflow-hidden bg-slate-50 dark:bg-slate-800/50 mb-4 cursor-pointer" onClick={() => setShowDetails(true)}>
         <img
           src={product.image}
           alt={product.isim}
@@ -50,7 +50,7 @@ const ProductCard = ({ product }) => {
         
         {/* Glassmorphic Hover Overlay */}
         <div className="absolute inset-0 bg-slate-900/30 backdrop-blur-[3px] opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center z-10">
-          <div className="flex items-center gap-2 bg-white/95 text-slate-900 px-5 py-2.5 rounded-2xl font-black text-xs shadow-2xl translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+          <div className="flex items-center gap-2 bg-white/95 dark:bg-slate-900/95 text-slate-900 dark:text-slate-100 px-5 py-2.5 rounded-2xl font-black text-xs shadow-2xl translate-y-4 group-hover:translate-y-0 transition-all duration-500">
             <Eye className="w-4 h-4 text-cyan-500" />
             İNCELE
           </div>
@@ -58,7 +58,7 @@ const ProductCard = ({ product }) => {
         
         {/* Badge'ler */}
         <div className="absolute top-4 left-4 flex flex-col gap-2">
-          <div className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest border backdrop-blur-md ${product.mensei === 'ithal' ? 'bg-white/80 text-blue-600 border-blue-100' : 'bg-emerald-500/90 text-white border-transparent'}`}>
+          <div className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest border backdrop-blur-md ${product.mensei === 'ithal' ? 'bg-white/80 dark:bg-slate-800/80 text-blue-600 dark:text-blue-400 border-blue-100 dark:border-blue-900/50' : 'bg-emerald-500/90 text-white border-transparent'}`}>
             {product.mensei === 'ithal' ? <Globe className="w-3 h-3" /> : <MapPin className="w-3 h-3" />}
             {product.mensei}
           </div>
@@ -70,7 +70,7 @@ const ProductCard = ({ product }) => {
         </div>
 
         {/* Ülke Bayrağı - Sağ Üst */}
-        <div className="absolute top-4 right-4 text-2xl backdrop-blur-sm bg-white/70 rounded-lg p-1.5 shadow-md">
+        <div className="absolute top-4 right-4 text-2xl backdrop-blur-sm bg-white/70 dark:bg-slate-900/70 rounded-lg p-1.5 shadow-md">
           {countryFlags[product.ulke] || '🌍'}
         </div>
 
@@ -84,19 +84,19 @@ const ProductCard = ({ product }) => {
       <div className="px-3 pb-3">
         <div className="mb-4">
           <p className="text-[10px] font-black text-cyan-500 uppercase tracking-widest mb-1">{product.marka}</p>
-          <h3 className="text-lg font-black text-slate-800 leading-tight mb-1 group-hover:text-cyan-600 transition-colors">{product.isim}</h3>
-          <p className="text-xs text-slate-400 font-medium">{product.hacim} · {product.ulke}</p>
+          <h3 className="text-lg font-black text-slate-800 dark:text-slate-100 leading-tight mb-1 group-hover:text-cyan-600 transition-colors">{product.isim}</h3>
+          <p className="text-xs text-slate-400 dark:text-slate-300 font-medium">{product.hacim} · {product.ulke}</p>
         </div>
 
         {/* pH Metre Skalası */}
         <div className="mb-4">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">pH {product.phDegeri}</span>
+            <span className="text-[10px] font-black text-slate-500 dark:text-slate-300 uppercase tracking-widest">pH {product.phDegeri}</span>
             <span className={`text-[9px] font-black uppercase tracking-widest ${product.phDegeri < 7 ? 'text-amber-500' : product.phDegeri === 7 ? 'text-emerald-500' : 'text-cyan-500'}`}>
               {product.phDegeri < 7 ? 'Asidik' : product.phDegeri === 7 ? 'Nötr' : 'Alkali'}
             </span>
           </div>
-          <div className="relative h-1.5 w-full bg-slate-100 rounded-full mb-1.5">
+          <div className="relative h-1.5 w-full bg-slate-100 dark:bg-slate-800 rounded-full mb-1.5">
             {/* Statik Gradyan Arka Plan (Sarı -> Mavi) */}
             <div className="absolute inset-0 bg-gradient-to-r from-amber-400 via-emerald-400 to-cyan-500 rounded-full opacity-60" />
             
@@ -112,8 +112,8 @@ const ProductCard = ({ product }) => {
             </div>
           </div>
           <div className="flex justify-between px-0.5">
-            <span className="text-[8px] text-slate-400 font-bold uppercase">Asidik</span>
-            <span className="text-[8px] text-slate-400 font-bold uppercase">Alkali</span>
+            <span className="text-[8px] text-slate-400 dark:text-slate-300 font-bold uppercase">Asidik</span>
+            <span className="text-[8px] text-slate-400 dark:text-slate-300 font-bold uppercase">Alkali</span>
           </div>
         </div>
 
@@ -124,7 +124,7 @@ const ProductCard = ({ product }) => {
                 <Star key={i} className={`w-3 h-3 ${i < Math.floor(product.rating) ? 'fill-current' : 'text-slate-200'}`} />
               ))}
             </div>
-            <span className="text-[10px] font-bold text-slate-300">({product.reviewCount})</span>
+            <span className="text-[10px] font-bold text-slate-400 dark:text-slate-300">({product.reviewCount})</span>
           </div>
 
           <button
@@ -134,8 +134,8 @@ const ProductCard = ({ product }) => {
             }}
             className={`flex items-center gap-1.5 px-3 py-1 rounded-xl text-[9px] font-black uppercase tracking-wider transition-all border ${
               selectedCompare
-                ? 'bg-cyan-50 text-cyan-600 border-cyan-150 shadow-sm shadow-cyan-500/5'
-                : 'bg-slate-50 text-slate-400 border-slate-100 hover:bg-slate-100 hover:text-slate-600'
+                ? 'bg-cyan-50 dark:bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border-cyan-150 dark:border-cyan-500/30 shadow-sm shadow-cyan-500/5'
+                : 'bg-slate-50 dark:bg-slate-800/50 text-slate-400 border-slate-100 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-600 dark:hover:text-slate-300'
             }`}
             title={selectedCompare ? 'Karşılaştırma listesinden çıkar' : 'Karşılaştırma listesine ekle'}
           >
@@ -146,8 +146,8 @@ const ProductCard = ({ product }) => {
 
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
-            <span className="text-xs font-bold text-slate-400 block -mb-1 tracking-tighter">FİYAT</span>
-            <span className="text-xl font-black text-slate-900">₺{product.fiyat.toFixed(2)}</span>
+            <span className="text-xs font-bold text-slate-400 dark:text-slate-300 block -mb-1 tracking-tighter">FİYAT</span>
+            <span className="text-xl font-black text-slate-900 dark:text-white">₺{product.fiyat.toFixed(2)}</span>
           </div>
           
           <button
