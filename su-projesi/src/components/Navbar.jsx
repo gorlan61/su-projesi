@@ -7,8 +7,17 @@ const Navbar = () => {
   const { totalItems } = useCart();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
   const location = useLocation();
   const isHome = location.pathname === '/';
+
+  useEffect(() => {
+    if (totalItems > 0) {
+      setIsAnimating(true);
+      const timer = setTimeout(() => setIsAnimating(false), 300);
+      return () => clearTimeout(timer);
+    }
+  }, [totalItems]);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -72,6 +81,7 @@ const Navbar = () => {
             <Link to="/sepet" className="relative group">
               <div className={`
                 flex items-center gap-2.5 px-5 py-2.5 rounded-2xl font-black text-xs transition-all duration-300 border
+                ${isAnimating ? 'scale-110 shadow-[0_0_20px_rgba(6,182,212,0.6)] ring-2 ring-cyan-400 z-10' : ''}
                 ${totalItems === 0 
                   ? (isHome && !scrolled 
                     ? 'bg-white/10 text-white/70 border-white/20 hover:bg-white/20 hover:text-white shadow-none' 
@@ -81,7 +91,7 @@ const Navbar = () => {
                     : 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white border-transparent hover:from-cyan-600 hover:to-blue-700 shadow-lg shadow-cyan-500/20 hover:-translate-y-0.5')
                 }
               `}>
-                <ShoppingCart className={`w-4 h-4 transition-all ${totalItems === 0 ? 'opacity-60' : 'animate-pulse'}`} />
+                <ShoppingCart className={`w-4 h-4 transition-transform duration-300 ${isAnimating ? 'scale-125 text-white' : totalItems === 0 ? 'opacity-60' : 'animate-pulse'}`} />
                 <span className={`hidden sm:inline transition-all`}>
                   {totalItems === 0 ? 'Boş' : 'Sepetim'}
                 </span>

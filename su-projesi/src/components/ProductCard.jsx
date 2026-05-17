@@ -25,15 +25,6 @@ const ProductCard = ({ product }) => {
     return 'bg-cyan-50 text-cyan-600 border-cyan-100';
   };
 
-  // pH Metre Skalası Renkleri (0-10 aralığında)
-  const getPHBarColor = (ph) => {
-    if (ph < 6.0) return 'from-red-500 to-orange-500';
-    if (ph < 7.0) return 'from-orange-400 to-yellow-400';
-    if (ph <= 7.5) return 'from-emerald-500 to-teal-500';
-    if (ph < 8.5) return 'from-cyan-400 to-blue-500';
-    return 'from-blue-600 to-indigo-600';
-  };
-
   const getPHBarPercentage = (ph) => Math.min(Math.max((ph / 10) * 100, 0), 100);
 
   // Ülke Bayrakları (Emoji)
@@ -47,7 +38,7 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <div className="group bg-white rounded-[32px] border border-slate-100 p-3 hover:shadow-2xl hover:shadow-cyan-500/10 hover:-translate-y-2 transition-all duration-500">
+    <div className="group bg-white rounded-[32px] border border-slate-100 p-3 hover:scale-[1.02] hover:shadow-xl transition-all duration-300">
       {/* Görsel Alanı */}
       <div className="relative aspect-[4/5] rounded-[24px] overflow-hidden bg-slate-50 mb-4 cursor-pointer" onClick={() => setShowDetails(true)}>
         <img
@@ -100,21 +91,29 @@ const ProductCard = ({ product }) => {
         {/* pH Metre Skalası */}
         <div className="mb-4">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">pH Skalası</span>
-            <span className="text-xs font-black text-slate-700">{product.phDegeri}</span>
+            <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">pH {product.phDegeri}</span>
+            <span className={`text-[9px] font-black uppercase tracking-widest ${product.phDegeri < 7 ? 'text-amber-500' : product.phDegeri === 7 ? 'text-emerald-500' : 'text-cyan-500'}`}>
+              {product.phDegeri < 7 ? 'Asidik' : product.phDegeri === 7 ? 'Nötr' : 'Alkali'}
+            </span>
           </div>
-          <div className="relative h-2 bg-slate-100 rounded-full overflow-hidden">
+          <div className="relative h-1.5 w-full bg-slate-100 rounded-full mb-1.5">
+            {/* Statik Gradyan Arka Plan (Sarı -> Mavi) */}
+            <div className="absolute inset-0 bg-gradient-to-r from-amber-400 via-emerald-400 to-cyan-500 rounded-full opacity-60" />
+            
+            {/* Nötr (7.0) Orta Çizgisi */}
+            <div className="absolute top-1/2 h-3 w-px bg-white/60 -translate-y-1/2 left-[70%] z-10" />
+
+            {/* Dinamik pH Göstergesi (Marker) */}
             <div 
-              className={`h-full bg-gradient-to-r ${getPHBarColor(product.phDegeri)} transition-all duration-500 shadow-sm`}
-              style={{ width: `${getPHBarPercentage(product.phDegeri)}%` }}
-            />
-            {/* 7.0 (Nötr) İşaretçi */}
-            <div className="absolute top-1/2 h-4 w-0.5 bg-slate-300 -translate-y-1/2" style={{ left: '70%' }} title="Nötr (7.0)" />
+              className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-3.5 h-3.5 bg-white border border-white/50 rounded-full shadow-[0_0_8px_rgba(6,182,212,0.8)] z-20 transition-all duration-700"
+              style={{ left: `${getPHBarPercentage(product.phDegeri)}%` }}
+            >
+              <div className={`w-full h-full rounded-full ${product.phDegeri < 7 ? 'bg-amber-400' : product.phDegeri === 7 ? 'bg-emerald-400' : 'bg-cyan-500'}`} />
+            </div>
           </div>
-          <div className="flex justify-between mt-1 px-0.5">
-            <span className="text-[8px] text-red-500 font-bold">Asidik</span>
-            <span className="text-[8px] text-emerald-600 font-bold">Nötr</span>
-            <span className="text-[8px] text-blue-600 font-bold">Alkali</span>
+          <div className="flex justify-between px-0.5">
+            <span className="text-[8px] text-slate-400 font-bold uppercase">Asidik</span>
+            <span className="text-[8px] text-slate-400 font-bold uppercase">Alkali</span>
           </div>
         </div>
 

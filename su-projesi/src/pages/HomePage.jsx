@@ -331,7 +331,7 @@ const HomePage = () => (
     <HeroSection />
     
     {/* Akıllı Tüketim Asistanı - Layered Floating Glassmorphic Container */}
-    <div className="max-w-4xl mx-auto px-4 relative z-20 -mt-20 mb-10">
+    <div id="smart-dashboard" className="max-w-4xl mx-auto px-4 relative z-20 -mt-20 mb-10 scroll-mt-24">
       <SmartDashboard />
     </div>
 

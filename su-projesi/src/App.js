@@ -9,6 +9,7 @@ import CompareBar from './components/CompareBar';
 import HomePage from './pages/HomePage';
 import ProductsPage from './pages/ProductsPage';
 import CartPage from './pages/CartPage';
+import FloatingTracker from './components/FloatingTracker';
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
               </main>
               <Footer />
               <CompareBar />
+              <FloatingTracker />
             </div>
           </CompareProvider>
         </CartProvider>
