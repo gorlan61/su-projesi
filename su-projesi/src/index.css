@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    @apply bg-slate-50 text-slate-800 antialiased;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-3 rounded-xl hover:from-cyan-400 hover:to-blue-500 transition-all duration-300 font-semibold shadow-lg hover:-translate-y-0.5 active:translate-y-0 cursor-pointer;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-cyan-600 border-2 border-cyan-500 px-6 py-3 rounded-xl hover:bg-cyan-50 transition-all duration-300 font-semibold hover:-translate-y-0.5 active:translate-y-0 cursor-pointer;
+  }
+
+  .btn-danger {
+    @apply bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-all duration-200 font-medium cursor-pointer;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400 outline-none transition-all duration-200 bg-white placeholder-slate-400 text-slate-800;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl shadow-sm border border-slate-100 hover:shadow-xl hover:border-cyan-200 transition-all duration-300;
+  }
+
+  .glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold text-slate-800 mb-2;
+  }
+
+  .section-subtitle {
+    @apply text-slate-500 text-lg mb-10;
+  }
+
+  .badge-import {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-100 text-amber-700;
+  }
+
+  .badge-local {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-700;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent;
+  }
+
+  .bg-hero {
+    background: linear-gradient(135deg, #0f172a 0%, #0c4a6e 50%, #0e7490 100%);
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
